@@ -1,0 +1,205 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif;
+    text-decoration: none;
+    list-style: none;
+}
+/* reset CSS */
+
+/* styling navbar */
+.navbar {
+    width: 50px;
+    height: 80%;
+    background-color: rgb(56, 101, 124);
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    position: fixed;
+    padding: 10px 5px;  
+    transition: all .4s ease-in;
+    top: 50%;
+    left: 20px;
+    border-radius: 20px;
+    transform: translateY(-50%); /* agar tinggi berada di tengah secara vertikal */
+}
+/* ketika button navbar aktif maka berikan width sebesar 130px */
+.btn:checked ~ .navbar {
+    width: 130px;
+}
+
+/* styling logo */
+.logo {
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+}
+/* ketika button navbar aktif maka berikan logo visibility hidden  */
+.btn:checked ~ .navbar .logo {
+    visibility: hidden;
+    transition: visibility .3s ease;
+
+}
+.text-logo {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+}
+/* ketika button navbar aktif maka berikan .text-logo left 50, transform -50% dan visibility diubah ke visible */
+.btn:checked ~ .navbar .text-logo {
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 1;
+    visibility: visible;
+    transition: visibility .4s ease .3s;
+}
+
+/* styling <.btn> / btn-trigger */
+input {
+    display: none; /* sembunyikan semua tag <input> */
+}
+
+/* styling <label> / button-open */
+.button-open {
+    position: absolute;
+    right: -16px;
+    top: 25px;
+    z-index: 999;
+}
+.bar {
+    cursor: pointer;   
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    background-color: #fff;
+    line-height: 2rem;
+    text-align: center;
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    transition: transform .25s ease-in;
+}
+
+/* ketika button navbar aktif maka berikan .bar rotasi sebesar 540deg */
+.btn:checked ~ .navbar .bar {
+    transform:rotate(-540deg);
+}
+
+/* styling menu-navbar */
+.menu-navbar {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    justify-content: space-between;
+    width: 40px;
+}
+
+/* styling list item di dalam .menu-navbar */
+.items {
+    /* display: none; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* styling anchor */
+.items a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* styling icon */
+.items i {
+    font-size: 20px;
+    color: #fff;
+}
+
+/* ketika button navbar aktif, saat icon di hover maka berikan left 50px kepada .text-items (nilai default) */
+.btn:checked ~ .navbar i:hover ~ .text-items {
+    left: 50px;
+}
+
+.text-items {
+    position: absolute;
+    left: 50px; /* nilai default */
+    width: 90px;
+    height: 20px;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    border-radius: 10px;
+    color: #fff;
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    background-color: rgb(56, 101, 124);
+    transition: left .3s ease, opacity .3s ease, visibility .3s ease;
+}
+/* ketika icon di hover maka berikan left 70px, opacity 1 dan visibility diubah ke visible untuk .text-items */
+.items i:hover ~ .text-items {
+    left: 70px;
+    opacity: 1;
+    visibility: visible;
+}
+/* ketika button navbar aktif maka berikan .text-items visibility visible, opacity 1, left 50% dan posisi text dikiri */
+.btn:checked ~ .navbar .text-items {
+    visibility: visible;
+    opacity: 1;
+    left: 50px;
+    pointer-events: visible;
+    background: transparent;
+    text-align: left;
+    
+}
+/* ketika button navbar aktif dan saat .text-items di hover maka berika warna */
+.btn:checked ~ .navbar .text-items:hover{
+    color: rgb(214, 214, 214);
+    
+}
+
+/* styling btn-tema */
+.btn-tema {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    position: relative;
+}
+
+.light, 
+.dark {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    transition: all .2s ease-in;
+    font-size: 18px;
+}
+.light {
+    color: #fff;
+    transition: all .2s ease-in;
+}
+.dark {
+    display: none;
+}
+/*  ketika button tema aktif maka hilangkan .light */
+.btn-trigger-tema:checked ~ .navbar .btn-tema .light {
+    display: none;
+}
+
+/* ketika button tema aktif berikan .dark opacity 1 , display block dan ubah visility menjadi visible */
+.btn-trigger-tema:checked ~ .navbar .btn-tema .dark {
+    opacity: 1;
+    visibility: visible;
+    display: block;
+    color: #fff;
+}
+
+/* ketika button tema aktif ganti warna backgroud .navbar */
+.btn-trigger-tema:checked ~ .navbar {
+    background-color: #212121;
+}
+
